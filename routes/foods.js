@@ -87,6 +87,8 @@ router.post('/', upload.single('image'), async (req, res) => {
     // If a file was uploaded, use its path. Otherwise, use a placeholder.
     let imageUrl = '';
     if (req.file) {
+      // Use BASE_URL from env or default to localhost
+      // Ideally, in production, BASE_URL should be set to the backend URL
       const baseUrl = process.env.BASE_URL || 'http://localhost:5000';
       imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
     }
